@@ -8,4 +8,3 @@ urlpatterns = [
     path('about',about_view),
     path('contact',contact_view)
 ]
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
