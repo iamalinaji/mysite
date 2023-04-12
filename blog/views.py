@@ -12,10 +12,7 @@ def blog_view(request):
 
 def blog_single(request,post_id=1):
     post = Post.objects.get(id=post_id)
-    published_date = post.published_date
-    date = published_date.date()
-    formatted_date = date.strftime('%B, %d, %Y')
-    context={'post':post,'date':formatted_date}
+    context={'post':post}
     post.counted_views+=1
     post.save()
     return render(request,'blog/blog-single.html',context)

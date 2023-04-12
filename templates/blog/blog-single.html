@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load custom_filters %}
+
     <!-- start banner Area -->
     <section class="relative about-banner">
         <div class="overlay overlay-bg"></div>
@@ -47,7 +49,7 @@
                                     <a href="#">Mark wiens</a> <span class="lnr lnr-user"></span>
                                 </p>
                                 <p class="date col-lg-12 col-md-12 col-6">
-                                    <a href="#">{{date}}</a> <span class="lnr lnr-calendar-full"></span>
+                                    <a href="#">{{ post.published_date|format_date }}</a> <span class="lnr lnr-calendar-full"></span>
                                 </p>
                                 <p class="view col-lg-12 col-md-12 col-6">
                                     <a href="#">{{post.counted_views}} Views</a> <span class="lnr lnr-eye"></span>
