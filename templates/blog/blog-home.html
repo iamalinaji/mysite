@@ -127,7 +127,7 @@
                                          src="{% static 'img/blog/feature-img1.jpg' %}"
                                          alt="">
                                 </div>
-                                <a class="posts-title" href="blog-single.html">
+                                <a class="posts-title" href="{% url 'blog:single' post_id=post.id %}">
                                     <h3>
                                         {{ post.title }}
                                     </h3>
@@ -135,7 +135,7 @@
                                 <p class="excert">
                                     {{ post.content }}
                                 </p>
-                                <a href="blog-single.html" class="primary-btn">View More</a>
+                                <a href="{% url 'blog:single' post_id=post.id %}" class="primary-btn">View More</a>
                             </div>
                         </div>
                     {% endfor %}
