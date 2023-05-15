@@ -1,8 +1,8 @@
 {
-    "emmet.includeLanguages": {
-        "django-html": "html"
-   },
-   "[html]": {
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
+  "[html]": {
     "editor.defaultFormatter": "monosans.djlint"
   },
   "[django-html]": {
@@ -35,5 +35,9 @@
   "[twig]": {
     "editor.defaultFormatter": "monosans.djlint"
   },
-  "djlint.enableLinting":false
+  "djlint.enableLinting": false,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none"
 }
