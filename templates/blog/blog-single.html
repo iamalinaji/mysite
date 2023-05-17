@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{% load custom_filters %}
-
+    {% load custom_filters %}
     <!-- start banner Area -->
     <section class="relative about-banner">
         <div class="overlay overlay-bg"></div>
         <div class="container">
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="about-content col-lg-12">
-                    <h1 class="text-white">{{post.title}}</h1>
+                    <h1 class="text-white">{{ post.title }}</h1>
                     <p class="text-white link-nav">
-                        <a href="{%url 'website:home'%}">Home</a>  <span class="lnr lnr-arrow-right"></span><a href="{% url 'blog:home'%}">Blog</a> <span class="lnr lnr-arrow-right"></span> {{post.title}}
+                        <a href="{% url 'website:home' %}">Home</a>  <span class="lnr lnr-arrow-right"></span><a href="{% url 'blog:home' %}">Blog</a> <span class="lnr lnr-arrow-right"></span> {{ post.title }}
                     </p>
                 </div>
             </div>
@@ -26,7 +25,9 @@
                     <div class="single-post row">
                         <div class="col-lg-12">
                             <div class="feature-img">
-                                <img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
+                                <img class="img-fluid"
+                                     src="{% static 'img/blog/feature-img1.jpg' %}"
+                                     alt="">
                             </div>
                         </div>
                         <div class="col-lg-3  col-md-3 meta-details">
@@ -46,13 +47,13 @@
                             </ul>
                             <div class="user-details row">
                                 <p class="user-name col-lg-12 col-md-12 col-6">
-                                    <a href="#">Mark wiens</a> <span class="lnr lnr-user"></span>
+                                    <a href="#">{{ post.author.get_full_name }}</a> <span class="lnr lnr-user"></span>
                                 </p>
                                 <p class="date col-lg-12 col-md-12 col-6">
                                     <a href="#">{{ post.published_date|format_date }}</a> <span class="lnr lnr-calendar-full"></span>
                                 </p>
                                 <p class="view col-lg-12 col-md-12 col-6">
-                                    <a href="#">{{post.counted_views}} Views</a> <span class="lnr lnr-eye"></span>
+                                    <a href="#">{{ post.counted_views }} Views</a> <span class="lnr lnr-eye"></span>
                                 </p>
                                 <p class="comments col-lg-12 col-md-12 col-6">
                                     <a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span>
@@ -74,10 +75,8 @@
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
-                            <h3 class="mt-20 mb-20">{{post.title}}</h3>
-                            <p class="excert">
-                                {{post.content}}
-                            </p>
+                            <h3 class="mt-20 mb-20">{{ post.title }}</h3>
+                            <p class="excert">{{ post.content }}</p>
                         </div>
                         <div class="col-lg-12">
                             <div class="row mt-30 mb-30">
@@ -110,21 +109,15 @@
                                     <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
                                 </div>
                                 <div class="detials">
-                                    <p>
-                                        Prev Post
-                                    </p>
+                                    <p>Prev Post</p>
                                     <a href="#">
-                                        <h4>
-                                            Space The Final Frontier
-                                        </h4>
+                                        <h4>Space The Final Frontier</h4>
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                                 <div class="detials">
-                                    <p>
-                                        Next Post
-                                    </p>
+                                    <p>Next Post</p>
                                     <a href="#">
                                         <h4>
                                             Telescopes 101

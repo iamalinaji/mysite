@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{% load custom_filters %}
-
+    {% load custom_filters %}
     <!-- start banner Area -->
     <section class="banner-area relative blog-home-banner" id="home">
         <div class="overlay overlay-bg"></div>
@@ -108,10 +107,10 @@
                                 </ul>
                                 <div class="user-details row">
                                     <p class="user-name col-lg-12 col-md-12 col-6">
-                                        <a href="#">Mark wiens</a> <span class="lnr lnr-user"></span>
+                                        <a href="#">{{ post.author.get_full_name }}</a> <span class="lnr lnr-user"></span>
                                     </p>
                                     <p class="date col-lg-12 col-md-12 col-6">
-                                        <a href="#">{{post.published_date|format_date}}</a> <span class="lnr lnr-calendar-full"></span>
+                                        <a href="#">{{ post.published_date|format_date }}</a> <span class="lnr lnr-calendar-full"></span>
                                     </p>
                                     <p class="view col-lg-12 col-md-12 col-6">
                                         <a href="#">{{ post.counted_views }} Views</a> <span class="lnr lnr-eye"></span>
