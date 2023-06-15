@@ -34,6 +34,12 @@ def blog_single(request, post_id):
     return render(request, 'blog/blog-single.html', context)
 
 
+def blog_category(request, category):
+    posts = Post.objects.filter(category__name=category)
+    context = {'posts': posts}
+    return render(request, 'blog/blog-home.html', context)
+
+
 def test(request):
     posts = Post.objects.filter(status=0)
     context = {'posts': posts}
