@@ -40,6 +40,16 @@ def blog_category(request, category):
     return render(request, 'blog/blog-home.html', context)
 
 
+def blog_search(request):
+    current_time = timezone.now()
+    posts = Post.objects.filter(published_date__lt=current_time)
+    if request.method == 'GET':
+        if s := request.GET.get('s'):
+            posts = posts.filter(content__contains=s)
+    context = {'posts': posts}
+    return render(request, 'blog/blog-home.html', context)
+
+
 def test(request):
     posts = Post.objects.filter(status=0)
     context = {'posts': posts}

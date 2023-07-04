@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
     {% load custom_filters %}
@@ -165,26 +165,13 @@
                 </div>
                 <div class="col-lg-4 sidebar-widgets">
                     <div class="widget-wrap">
-                        <div class="single-sidebar-widget search-widget">
-                            <form class="search-form" action="#">
-                                <input placeholder="Search Posts"
-                                       name="search"
-                                       type="text"
-                                       onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = 'Search Posts'">
-                                <button type="submit">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </form>
-                        </div>
-                        {% include 'blog/blog-writer.html' %}
+                        {% include "blog/blog-search.html" %}
+                        {% include "blog/blog-writer.html" %}
                         {% blogPopularPost %}
-                        {% include 'blog/blog-ads.html' %}
+                        {% include "blog/blog-ads.html" %}
                         {% blogCategory %}
                         <div class="single-sidebar-widget newsletter-widget">
-                            <h4 class="newsletter-title">
-                                Newsletter
-                            </h4>
+                            <h4 class="newsletter-title">Newsletter</h4>
                             <p>
                                 Here, I focus on a range of items and features that we use in life without
                                 giving them a second thought.
@@ -207,14 +194,10 @@
                                 </div>
                                 <a href="#" class="bbtns">Subcribe</a>
                             </div>
-                            <p class="text-bottom">
-                                You can unsubscribe at any time
-                            </p>
+                            <p class="text-bottom">You can unsubscribe at any time</p>
                         </div>
                         <div class="single-sidebar-widget tag-cloud-widget">
-                            <h4 class="tagcloud-title">
-                                Tag Clouds
-                            </h4>
+                            <h4 class="tagcloud-title">Tag Clouds</h4>
                             <ul>
                                 <li>
                                     <a href="#">Technology</a>
@@ -260,4 +243,4 @@
         </div>
     </section>
     <!-- End post-content Area -->
-{% endblock %}
+{% endblock content %}
