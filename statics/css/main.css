@@ -2940,6 +2940,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
+  width: 360px;
+  height: 260px;
   transition: all 0.3s ease 0s;
 }
 

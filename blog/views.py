@@ -4,11 +4,20 @@ from django.utils import timezone
 from django.http import Http404
 import datetime
 from django.shortcuts import redirect
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def blog_view(request):
     current_time = timezone.now()
     posts = Post.objects.filter(published_date__lt=current_time)
+    paginator = Paginator(posts, 2)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(1)
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
 
