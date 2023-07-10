@@ -49,6 +49,12 @@ def blog_category(request, category):
     return render(request, 'blog/blog-home.html', context)
 
 
+def blog_tag(request, tag):
+    posts = Post.objects.filter(tags__name__in=[tag])
+    context = {'posts': posts}
+    return render(request, 'blog/blog-home.html', context)
+
+
 def blog_search(request):
     current_time = timezone.now()
     posts = Post.objects.filter(published_date__lt=current_time)
