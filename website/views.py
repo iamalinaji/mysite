@@ -26,4 +26,6 @@ def contact_view(request):
         else:
             messages.add_message(request, messages.ERROR,
                                  "Your ticket was not submitted")
-    return render(request, 'website/contact.html')
+    else:
+        form = ContactForm()
+    return render(request, 'website/contact.html', {'form': form})
