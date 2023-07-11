@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Comment
 from django.utils import timezone
 from django.http import Http404
 import datetime
 from django.shortcuts import redirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from blog.forms import CommentForm
+from django.contrib import messages
 
 
 def blog_view(request):
@@ -27,16 +29,28 @@ def redirect_to_single_default(request):
 
 
 def blog_single(request, post_id):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, "Your Comment was submitted successfully")
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 "Your Comment was not submitted")
     current_time = timezone.now()
     post = get_object_or_404(Post, pk=post_id, published_date__lt=current_time)
     next_post = Post.objects.filter(
         published_date__gt=post.published_date).order_by('published_date').first()
     previous_post = Post.objects.filter(
         published_date__lt=post.published_date).order_by('-published_date').first()
+    comments = Comment.objects.filter(
+        post=post.id, approved=True)
     context = {
         'post': post,
         'next_post': next_post,
         'previous_post': previous_post,
+        'comments': comments
     }
     post.counted_views += 1
     post.save()
