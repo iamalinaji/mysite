@@ -1,0 +1,28 @@
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+
+    .login-form {
+    max-width: 350px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-form .form-control {
+    margin-bottom: 30px;
+    }
+
+    .login-form .btn-primary {
+    width: 100%;
+    }
+    
+    .login-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    }
