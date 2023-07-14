@@ -38,14 +38,18 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-sm-6 col-6 header-top-left">
-                            <ul>
-                                <li>
-                                    <a href="#">Visit Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">Buy Tickets</a>
-                                </li>
-                            </ul>
+                            {% if user.is_authenticated %}
+                                <p class="text-white">You are logged in as {{ user.get_username }}</p>
+                            {% else %}
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'account:login' %}">login</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'account:signup' %}">signup</a>
+                                    </li>
+                                </ul>
+                            {% endif %}
                         </div>
                         <div class="col-lg-6 col-sm-6 col-6 header-top-right">
                             <div class="header-social">
