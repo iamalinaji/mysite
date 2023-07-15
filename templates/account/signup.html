@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SignUp Form</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <!-- Font Icon -->
+        <link rel="stylesheet"
+              href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+        <!-- Main css -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form action="{% url 'account:signup' %}"
+                              method="post"
+                              class="register-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="zmdi zmdi-account material-icons-name"></i>
+                                </label>
+                                <input type="text" name="username" placeholder="Your Name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="pass">
+                                    <i class="zmdi zmdi-lock"></i>
+                                </label>
+                                <input type="password" name="password1" placeholder="Password" />
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass">
+                                    <i class="zmdi zmdi-lock-outline"></i>
+                                </label>
+                                <input type="password" name="password2" placeholder="Repeat your password" />
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" class="form-submit" value="Register" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure>
+                            <img src="{% static 'img/signup-image.jpg' %}" alt="sing up image">
+                        </figure>
+                        <a href="{% url 'account:login' %}" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+        {% if messages %}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+            <link rel="stylesheet"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+            <script>{% for message in messages %}toastr.{{ message.tags }}("{{ message }}");{% endfor %}</script>
+        {% endif %}
+    </body>
+</html>
