@@ -36,6 +36,8 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 return redirect('/')
+            else:
+                messages.error(request, 'Invalid username or password')
         return render(request, 'account/login.html')
 
     else:
